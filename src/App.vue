@@ -1,14 +1,27 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import axios from 'axios';
 import { store } from './store.js';
 
 export default {
   components: {
+    AppHeader,
     AppMain,
   },
   data() {
     return {
       store,
+    }
+  },
+  created(){
+    this.TopRated();
+  },
+  methods:{
+    TopRated(){
+      axios.get(store.ApiTopFilm).then((response) => {
+        store.ApiTopFilm = response.data.results
+      })
     }
   }
 }
@@ -16,6 +29,7 @@ export default {
 
 <template lang="">
   <div>
+    <AppHeader />
     <AppMain />
   </div>
 </template>
