@@ -8,7 +8,7 @@ export default {
         }
     },
     props: {
-        TopRated: Object,
+        Toprated: Object,
     }
 }
 </script>
@@ -16,13 +16,13 @@ export default {
 <template lang="">
     <div class="col-12 col-md-3 mt-3">
         <div class="cards">
-            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(TopRated.poster_path)}`" alt="">
+            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(Toprated.poster_path)}`" alt="">
             <div class="cards-list p-4">
-                <h4>{{ TopRated.title }}</h4>
-                <p>Titolo originale: {{ TopRated.original_title }}</p>
-                <p>Lingua: {{ TopRated.original_language }}</p>
-                <p>Voto: {{ TopRated.vote_average }}</p>
-                <img class="flag" :src="`https://unpkg.com/language-icons/icons/${(TopRated.original_language)}.svg`" alt="flag">
+                <h4>{{ Toprated.title }}</h4>
+                <p>Titolo originale: {{ Toprated.original_title }}</p>
+                <p>Lingua: {{ Toprated.original_language }}</p>
+                <p>Voto: {{ Toprated.vote_average }}</p>
+                <img class="flag" :src="`https://unpkg.com/language-icons/icons/${(Toprated.original_language)}.svg`" alt="flag">
             </div>
         </div>
     </div>

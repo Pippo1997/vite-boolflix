@@ -20,7 +20,7 @@ export default {
   methods:{
     TopRated(){
       axios.get(store.ApiTopFilm).then((response) => {
-        store.ApiTopFilm = response.data.results
+        store.TopFilm = response.data.results
       })
     }
   }
