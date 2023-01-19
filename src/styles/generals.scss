@@ -1,6 +1,6 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-@import "@fontsource/bebas-neue";
+@import "@fontsource/montserrat";
 
 *{
     padding: 0;
@@ -9,6 +9,7 @@
 }
 
 body{
+    font-family: 'Montserrat';
     background-color: rgba(0,0,0,255);
     color: rgba(255,255,255,255);
 }
