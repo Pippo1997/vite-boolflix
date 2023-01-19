@@ -9,17 +9,19 @@ export default {
     },
     methods: {
         filledStars() {
-            let starFull = Math.round(this.Toprated.vote_average / 2);
             let starsFilledArr = [];
+            let starFull = Math.round(this.Toprated.vote_average / 2);
 
             for (let i = 0; i < starFull; i++) {
                 starsFilledArr.push('fa-solid fa-star');
             }
 
             let starEmpty = 5 - starFull;
+
             for (let i = 0; i < starEmpty; i++) {
                 starsFilledArr.push('fa-regular fa-star');
             }
+            
             return starsFilledArr
         },
     },
