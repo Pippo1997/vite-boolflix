@@ -7,6 +7,22 @@ export default {
              store,
         }
     },
+    methods: {
+        filledStars() {
+            let starFull = Math.round(this.serie.vote_average / 2);
+            let starsFilledArr = [];
+
+            for (let i = 0; i < starFull; i++) {
+                starsFilledArr.push('fa-solid fa-star');
+            }
+
+            let starEmpty = 5 - starFull;
+            for (let i = 0; i < starEmpty; i++) {
+                starsFilledArr.push('fa-regular fa-star');
+            }
+            return starsFilledArr
+        },
+    },
     props: {
         serie: Object,
     }
@@ -16,13 +32,15 @@ export default {
 <template lang="">
     <div class="col-12 col-md-3 mt-3">
         <div class="cards">
-            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(serie.poster_path)}`" alt="">
+            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(serie.poster_path)}`" alt="poster">
             <div class="cards-list p-4">
                 <h4>{{ serie.title }}</h4>
                 <p>Titolo originale: {{ serie.original_name }}</p>
                 <p>Lingua: {{ serie.original_language }}</p>
-                <p>Voto: {{ serie.vote_average }}</p>
-                <img class="flag" :src="`https://unpkg.com/language-icons/icons/${(serie.original_language)}.svg`" alt="">
+                <p>Voto: 
+                    <i v-for="(value, index) in filledStars()" :key="index" :class="value"></i>
+                </p>
+                <img class="flag" :src="`https://unpkg.com/language-icons/icons/${(serie.original_language)}.svg`" alt="flag">
             </div>
         </div>
     </div>

@@ -7,6 +7,22 @@ export default {
              store,
         }
     },
+    methods: {
+        filledStars() {
+            let starFull = Math.round(this.Toprated.vote_average / 2);
+            let starsFilledArr = [];
+
+            for (let i = 0; i < starFull; i++) {
+                starsFilledArr.push('fa-solid fa-star');
+            }
+
+            let starEmpty = 5 - starFull;
+            for (let i = 0; i < starEmpty; i++) {
+                starsFilledArr.push('fa-regular fa-star');
+            }
+            return starsFilledArr
+        },
+    },
     props: {
         Toprated: Object,
     }
@@ -15,13 +31,15 @@ export default {
 
 <template lang="">
     <div class="col-12 col-md-3 mt-3">
-        <div class="cards">
-            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(Toprated.poster_path)}`" alt="">
+        <div class="cards m-1">
+            <img class="cards-img" :src="`https://image.tmdb.org/t/p/w342/${(Toprated.poster_path)}`" alt="poster">
             <div class="cards-list p-4">
                 <h4>{{ Toprated.title }}</h4>
                 <p>Titolo originale: {{ Toprated.original_title }}</p>
                 <p>Lingua: {{ Toprated.original_language }}</p>
-                <p>Voto: {{ Toprated.vote_average }}</p>
+                <p>Voto: 
+                    <i v-for="(value, index) in filledStars()" :key="index" :class="value"></i>
+                </p>
                 <img class="flag" :src="`https://unpkg.com/language-icons/icons/${(Toprated.original_language)}.svg`" alt="flag">
             </div>
         </div>
